@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .ab{
+        padding-top: 150px;
+        height: 613px;
+   
+      }
+    @media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+     .ab{
+      padding-top:60px;}
+     p{
+      
+        color:black;
+    }
+    }
+    @media only screen and (max-device-width :  1605px) {
+  ab{
+        padding-top: 600px;
+        height: 613px;
+      }
+   }
+    p{
+        font-size: 20px;
+        color:black;
+    }
+    h2{
+        color:black;
+    }
+    .navbar-nav li a:hover, .navbar-nav li.active a,.active  {
+    color: #038801 !important;
+    background-color: rgba(255, 255, 255, 0.552) !important;
+  }
+
+  
+</style>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#myPage">Sri MHS Hospital</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{% url 'open_main' %}" class="nav-link">Home</a></li>
+          <li><a href="{% url 'admin_click' %}" >Admin</a></li>
+          <li><a href="{% url 'doc_click' %}">Doctors</a></li>
+          <li><a href="{% url 'patient_click' %}">Patients</a></li>
+          <li><a href="{% url 'contact' %}" class="active">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<div class="container-fluid bg-2 text-center ab">
+  <div id="contact" class="container-fluid bg-grey">
+    <h3 class="text-center">CONTACT</h3>
+    <div class="row">
+      <div class="col-sm-5">
+        <p>Contact us and we'll get back to you within 24 hours.</p>
+        <p><span class="glyphicon glyphicon-map-marker"></span> Chicago, US</p>
+        <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+        <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
+      </div>
+      <div class="col-sm-7 slideanim">
+        <form method="post" action="{% url 'contact' %}">
+          {% csrf_token %}
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+          </div>
+          <div class="col-sm-6 form-group">
+            <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+          </div>
+        </div>
+        <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+        <div class="row">
+          <div class="col-sm-12 form-group">
+            <button class="btn btn-default pull-right" type="submit">Send</button>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+  
+{% endblock %}

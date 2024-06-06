@@ -1,0 +1,97 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+<head>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+  .btn:hover {
+  background-color: #e40d63;
+  color:white;
+   }
+.btn{
+    background-color: #FF0063;
+    width: 180px;
+    color: #EAF6F6;
+  }
+ 
+
+  </style>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<br><br>
+
+
+<div  class="ab container mt-4 mb-4 p-4">
+  <div class="row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+  <div class="card">
+    <div class="container p-4 text-center" style="color:#FF0063;background-color:#EAF6F6;font-family: Montserrat, sans-serif;" ><h3>Book Appoinment</h3> </div>
+    <div class="card-body">
+      <form id="bookingForm" action="{% url 'admin_appointment_submit' %}" method="post" class="needs-validation" novalidate autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+          <label  class="label-title">Patient Name</label>
+          <select name="pname" class="form-control" required>
+          {% for i in patient %}
+          <option value="{{ i.id }}">{{ i.patient.first_name}} {{ i.patient.last_name}}</option>
+          {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label  class="label-title">Doctor Name</label>
+          
+          <select name="dname" class="form-control" required>
+            {% for i in doc %}
+            <option value="{{ i.id }}">{{ i.doctor.first_name}} ({{i.specialization}})</option>
+            {% endfor %}
+            </select> 
+        </div>
+        <div class="form-group">
+          <label  class="label-title">Description</label>
+          <textarea  name="des" class="form-control" cols="40" rows="5" required></textarea>
+        </div>                   
+        <button class="btn btn-block col-lg-2" type="submit">Submit</button>
+
+      </form>
+    </div>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+</div>
+<script>
+  (function () {
+ "use strict";
+ window.addEventListener(
+   "load",
+   function () {
+     // Fetch all the forms we want to apply custom Bootstrap validation styles to
+     var forms = document.getElementsByClassName("needs-validation");
+     // Loop over them and prevent submission
+     var validation = Array.prototype.filter.call(forms, function (form) {
+       form.addEventListener(
+         "submit",
+         function (event) {
+           if (form.checkValidity() === false) {
+             event.preventDefault();
+             event.stopPropagation();
+           }
+           form.classList.add("was-validated");
+         },
+         false
+       );
+     });
+   },
+   false
+ );
+})();
+
+   
+   </script>
+{% endblock content %}

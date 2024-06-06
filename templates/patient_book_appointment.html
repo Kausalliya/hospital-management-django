@@ -1,0 +1,251 @@
+{% extends 'patient_base.html' %}
+{% block content %}
+
+<head>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #0062cc;
+      color: #fff;
+    }
+
+    .menu {
+      top: 50px;
+    }
+   
+    p{
+        font-size: 20px;
+        color:black;
+    }
+    h2{
+        color:black;
+    }
+ 
+
+
+.signup-form {
+  font-family: "Roboto", sans-serif;
+  width:550px;
+  margin:30px auto;
+  background:linear-gradient(to right, #99ffa947 0%, #c4dbbf45 50%, #bef5c26c 99%);
+  border-radius: 10px;
+
+}
+
+.form-header  {
+  background-color: #1c321c;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.form-header h1 {
+  font-size: 25px;
+  text-align:center;
+  color:rgb(255, 255, 255);
+  padding:20px 0;
+  border-bottom:1px solid #cccccc;
+}
+.form-body {
+  padding:10px 40px;
+  color:rgb(4, 57, 6);
+}
+
+.form-group{
+  margin-bottom:20px;
+}
+
+.form-body .label-title {
+  color:#103604;
+  font-size: 17px;
+  font-weight: bold;
+  padding:8px;
+}
+
+.form-body .form-input {
+    font-size: 17px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #078f12;
+    text-align: left;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    background: rgb(255, 255, 255);
+    outline: none;
+}
+
+
+
+.horizontal-group .left{
+  float:left;
+  width:49%;
+}
+
+.horizontal-group .right{
+  float:right;
+  width:49%;
+}
+
+input[type="file"] {
+ outline: none;
+ cursor:pointer;
+ font-size:15px;
+}
+
+#range-label {
+ width:15%;
+ padding:5px;
+ background-color: #ba281b;
+ color:white;
+ border-radius: 5px;
+ font-size: 17px;
+ position: relative;
+ top:-8px;
+}
+
+
+::-webkit-input-placeholder {
+ color:#d9d9d9;
+}
+
+.form-footer {
+ clear:both;
+}
+
+.signup-form .form-footer  {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding:10px 40px;
+  text-align: center;
+  border-top: 1px solid #cccccc;
+}
+
+.form-footer span {
+  float:left;
+  margin-top: 10px;
+  color:#999;  
+  font-style: italic;
+  font-weight: thin;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a,.active  {
+    color: #038801 !important;
+    background-color: rgba(255, 255, 255, 0.552) !important;
+  }
+.btn {
+   display:inline-block;
+   padding:10px 20px;
+   background-color: #153706;
+   font-size:17px;
+   border:none;
+   border-radius:5px;
+   color:#ffffff;
+   cursor:pointer;
+}
+
+.btn:hover {
+  background-color: #27680f;
+  color:white;
+}
+
+  </style>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<br><br>
+    <div  class="ab container mt-4 mb-4 p-4">
+      <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+      <div class="card">
+        <div class="container p-4 text-center" style="color:#FF0063;background-color:#EAF6F6;font-family: Montserrat, sans-serif;" ><h3>Book Appoinment</h3> </div>
+        <div class="card-body">
+          <form id="bookingForm" action="{% url 'patient_appointment_submit' request.user.id %}" method="post" class="needs-validation" novalidate autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+              <label  class="label-title">Name</label>
+              <input type="text" name="pname" class="form-control" required>
+              
+            </div>
+            <div class="form-group">
+              <label  class="label-title">Doctor Name</label>
+              
+              <select name="dname" class="form-control" required>
+                {% for i in doc %}
+                <option value="{{ i.id }}">{{ i.doctor.first_name}} {{ i.doctor.last_name}}  ({{i.specialization}})</option>
+                {% endfor %}
+                </select> 
+            </div>
+            <div class="form-group">
+              <label  class="label-title">Description</label>
+              <textarea  name="des" class="form-control" cols="40" rows="5" required></textarea>
+            </div>                   
+            <button class="btn btn-block col-lg-2" type="submit">Submit</button>
+    
+          </form>
+        </div>
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+    </div>
+    <script>
+      (function () {
+     "use strict";
+     window.addEventListener(
+       "load",
+       function () {
+         // Fetch all the forms we want to apply custom Bootstrap validation styles to
+         var forms = document.getElementsByClassName("needs-validation");
+         // Loop over them and prevent submission
+         var validation = Array.prototype.filter.call(forms, function (form) {
+           form.addEventListener(
+             "submit",
+             function (event) {
+               if (form.checkValidity() === false) {
+                 event.preventDefault();
+                 event.stopPropagation();
+               }
+               form.classList.add("was-validated");
+             },
+             false
+           );
+         });
+       },
+       false
+     );
+    })();
+    
+       
+       </script>
+{% endblock content %}

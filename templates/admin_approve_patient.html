@@ -1,0 +1,62 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+<div class="container">
+  <div class="panel">
+    <div class="panel-heading" style="text-align:center;background-color:#FF0063 ;color: white;">
+      <h6 class="panel-title">Patient Wants To Admit</h6>
+    </div>
+    <div class="table-responsive">
+    <table class="table table-hover text-centre table-bordered">
+      <thead>
+        <tr>
+          <th class="text-center pt-4">Name</th>
+          <th class="text-center pt-4">Address</th>
+          <th class="text-center pt-4">Mobile</th>
+          <th class="text-center pt-4">Gender</th>
+          <th class="text-center pt-4">Date Of Birth</th>
+          <th class="text-center pt-4">Age</th>
+          <th class="text-center pt-4">Marital Status</th>
+          <th class="text-center pt-4">Approve</th>
+          <th class="text-center pt-4">Reject</th>
+        </tr>
+      </thead>
+      {% for p in patients %}
+      <tr>
+        <td class="text-center"> {{p.patient.first_name}} {{p.patient.last_name}}</td>
+        <td class="text-center">{{p.address}}</td>
+        <td class="text-center">{{p.mobile}}</td>
+        <td  class="text-center">{{p.gender}}</td>
+        <td class="text-center">{{p.dob}}</td>
+        <td class="text-center">{{p.age}}</td>
+        <td class="text-center">{{p.matrial_status}}</td>
+        <td class="text-center"><a class="btn btn-primary btn-xs" href="{% url 'approve_patient' p.id %}"><span class="glyphicon glyphicon-ok"></span></a></td>
+        <td class="text-center"><a class="btn btn-danger btn-xs" href="{% url 'approve_delete_patient' p.id %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+    </div>
+  </div>
+
+
+</div>
+{% endblock content %}

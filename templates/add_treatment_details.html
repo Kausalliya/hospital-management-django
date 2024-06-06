@@ -1,0 +1,138 @@
+{% extends 'doctor_base.html' %}
+{% block content %}
+
+<head>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #0062cc;
+      color: #fff;
+    }
+
+    .menu {
+      top: 50px;
+    }
+   
+    p{
+        font-size: 20px;
+        color:black;
+    }
+    h2{
+        color:black;
+    }
+ 
+
+  .btn:hover {
+  background-color: #e40d63;
+  color:white;
+   }
+.btn{
+    background-color: #FF0063;
+    width: 180px;
+    color: #EAF6F6;
+  }
+ 
+
+
+  </style>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<div class="ab container mt-4 mb-4 p-4 ">
+  {% for message in messages %}
+  <p style="width: 60%;margin-left:auto;margin-right:auto;color: #f9210d;text-align: center;">
+   {{ message }}
+  </p>
+   {% endfor %}
+   <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+   <div class="card text-center ">
+    <div class="container p-3 text-center" style="color:#FF0063;background-color:#EAF6F6;font-family: Montserrat, sans-serif;" ><h3>Patient Login</h3> </div>
+    <!-- Start Card Body -->
+    <div class="card-body">
+      <!-- Start Form -->
+      <form id="bookingForm" action="{% url 'add_treatment' patient.id  %}" method="post" class="needs-validation" novalidate autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+          <div class="form-group mt-2">
+            <label for="inputDate">Disease</label>
+            <input type="text" class="form-control mt-1" id="inputDate" name="disease"  required />
+            <small class="form-text text-muted"></small>
+          </div>
+          <div class="form-group">
+            <label for="inputDate" class="mt-2 ">Prescribed Medicine</label>
+            <textarea name="medicine" class="form-control" cols="20" rows="6" required="required"></textarea>
+            
+            <small class="form-text text-muted"></small>
+          </div>
+          <button class="btn btn-primary btn-block mt-3 mb-3" style="background-color:#e40d63" type="submit">Add</button>
+      </form>
+    </div>
+      </div>
+      </div>
+      <div class="col-sm-1 "></div>
+    </div>
+  </div>
+       
+<!---------->
+<script>
+  (function () {
+ "use strict";
+ window.addEventListener(
+   "load",
+   function () {
+     // Fetch all the forms we want to apply custom Bootstrap validation styles to
+     var forms = document.getElementsByClassName("needs-validation");
+     // Loop over them and prevent submission
+     var validation = Array.prototype.filter.call(forms, function (form) {
+       form.addEventListener(
+         "submit",
+         function (event) {
+           if (form.checkValidity() === false) {
+             event.preventDefault();
+             event.stopPropagation();
+           }
+           form.classList.add("was-validated");
+         },
+         false
+       );
+     });
+   },
+   false
+ );
+})();
+
+   
+   </script>
+{% endblock content %}

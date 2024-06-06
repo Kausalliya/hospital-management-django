@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+  <title>Sri MHS Hospital</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  
+  
+<style>
+  
+  body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    color:  #000000;
+  }
+  h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #FF0063;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    color: #FF0063;
+    font-weight: 400;
+    margin-bottom: 30px;
+  }  
+  .jumbotron {
+    background-color: #EAF6F6;
+    color: #fff;
+    padding: 180px 0px 25px;
+    font-family: Montserrat, sans-serif;
+  }
+ 
+
+  .bg-grey {
+    background-color: #f6f6f6;
+  }
+  .logo-small {
+    color:  #143216;
+    font-size: 50px;
+  }
+  .logo {
+    color: #143216;
+    font-size: 200px;
+  }
+  .thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+  }
+  .thumbnail img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .item h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    font-style: italic;
+    margin: 70px 0;
+  }
+  .item span {
+    font-style: normal;
+  }
+  .panel {
+    border: 1px solid  #143216; 
+    border-radius:0 !important;
+    transition: box-shadow 0.5s;
+  }
+  .panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+  .panel-footer .btn:hover {
+    border: 1px solid #143216;
+    background-color: #fff !important;
+    color: #143216;
+  }
+  .panel-heading {
+    color: #fff !important;
+    background-color: #143216;
+    padding: 25px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  .panel-footer {
+    background-color: white !important;
+  }
+  .panel-footer h3 {
+    font-size: 32px;
+  }
+  .panel-footer h4 {
+    color: #aaa;
+    font-size: 14px;
+  }
+  .panel-footer .btn {
+    margin: 15px 0;
+    background-color: #143216;
+    color: #fff;
+  }
+  .navbar {
+    margin-bottom:0%;
+    padding-top: 30px;
+    background-color: #66BFBF;
+    z-index: 9999;
+    border: 0;
+    font-size: 15px;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    font-family: Montserrat, sans-serif;
+   
+  }
+  .navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+    color:#FF0063 !important;
+    background-color: #EAF6F6 !important;
+
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a,.active  {
+    color: #FF0063 !important;
+    background-color: rgba(255, 255, 255, 0.552) !important;
+  }
+  .navbar .navbar-toggle{
+    border-color: black;
+    color: #EAF6F6 !important;
+  }
+  
+  .slideanim {visibility:hidden;}
+  .slide {
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    visibility: visible;
+  }
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+      width: 100%;
+      margin-bottom: 35px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .logo {
+      font-size: 150px;
+    }
+  }
+  .btn:hover {
+  background-color: #e40d63;
+  color:white;
+}
+.btn{
+    background-color: #FF0063;
+    width: 180px;
+    color: #EAF6F6;
+  }
+
+footer{
+    background-color: #66BFBF;
+    margin-bottom: 0%;
+    height: 140px;
+  }
+  footer .glyphicon {
+    
+    font-size: 20px;
+    margin-bottom: 20px;
+    color:  #FF0063;}
+
+    .popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+#div_change_qty{display:none;}
+</style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+  <nav class="navbar navbar-expand-md  navbar-dark">
+    <div class="container">
+     <div class="container">
+    <a class="navbar-brand" href="#">Sri MHS Hospital</div>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <div class="container">
+      <ul class="navbar-nav mb-0">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'open_main' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'admin_click' %}" >Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'doc_click' %}">Doctors</a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'patient_click' %}">Patients</a>
+        </li>   
+      </ul>
+    </div>
+    </div>
+    </div>  
+  </nav>
+  <!------------------->
+  <div class="ab container mt-4 mb-4 p-4">
+    
+     <div class="card">
+      <div class="container p-4 text-center" style="color:#FF0063;background-color:#EAF6F6;font-family: Montserrat, sans-serif;" ><h1>Doctor Registration</h1> </div>
+      <!-- Start Card Body -->
+      <div class="card-body p-4">
+        <!-- Start Form -->
+        <form id="bookingForm" action="{% url 'doctor_signup' %}" onsubmit="user" method="post" class="needs-validation" novalidate autocomplete="off" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-row">
+            <!-- Start Input Date -->
+            <div class="form-group col-md-6">
+              <label for="inputDate">First Name</label>
+              <input type="text" class="form-control" id="inputDate" name="fname" placeholder="Enter Your Firstname" style="text-transform: capitalize;" required />
+              <small class="form-text text-muted"></small>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputDate">Last Name</label>
+              <input type="text" class="form-control" id="inputDate" name="lname" placeholder="Enter Your Lastname" style="text-transform: capitalize;"  required />
+              <small class="form-text text-muted"></small>
+            </div>
+         </div>   
+
+            <div class="form-group">
+              <label for="inputName">Address</label>
+              <textarea class="form-control" name="address"  rows="2" style="text-transform: capitalize;" placeholder="Enter Your Address" required ></textarea>
+              <small class="form-text text-muted"></small>
+            </div>
+            
+            <div class="form-row">
+            <div class="form-group col-md-6">
+              <legend class="col-form-label pt-0">Gender</legend>
+              <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" id="inlineRadioType1" name="gender" value="male" required />
+                <label class="form-check-label" for="inlineRadioType1">Male</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" id="inlineRadioType2" name="gender" value="female" required />
+                <label class="form-check-label" for="inlineRadioType2">Female</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" id="inlineRadioType3" name="gender" value="other"  required />
+                <label class="form-check-label" for="inlineRadioType3">Other</label>
+              </div> 
+            </div>
+              <div class="form-group col-md-6">
+                <label for="inputDate">Contact Number</label>
+                <input type="tel" class="form-control" id="inputPhone" name="number" placeholder="099xxxxxxx" pattern="\d{5}\d{5}" required />
+                <small class="form-text text-muted"></small>
+             </div>
+            </div>
+
+            <div class="form-row">
+              <!-- Start Input Date -->
+              <div class="form-group col-md-6">
+                <label  class="label-title">Specialization</label>
+                          <select required="required" class="form-control" name="select" id="qwerty" required>
+                            <option value="">Select Your Specialization</option>
+                            <option value="Cardiologist">Cardiologist</option>
+                            <option value="Dermatologists">Dermatologists</option>
+                            <option value="Emergency Medicine Specialists">Emergency Medicine Specialists</option>
+                            <option value="Allergists/Immunologists">Allergists/Immunologists</option>
+                            <option value="gynecologist">gynecologist</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                           
+                          </select>
+                <small class="form-text text-muted"></small>
+              </div>
+              <div class="form-group col-md-6">
+                <label  class="label-title">Profile Picture</label>
+                <input type="file" class="form-control" name="pic"  required="required">
+                <small class="form-text text-muted"></small>
+              </div>
+           </div> 
+         <div class="form-row mt-3">
+          <!-- Start Input Date -->
+          <div class="form-group col-md-6">
+            <label for="inputDate">Username</label>
+              <input type="text" class="form-control" id="uname" name="uname" pattern="(?=.*\d)(?=.*[a-z]).{6,}" placeholder="Enter Your UserName" required />
+             <small class="form-text text-muted">Must contain at least one number and one letters, and at least 6 or more characters</small>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputDate">Email</label>
+            <input type="email" class="form-control" id="inputDate" name="email" placeholder="Enter Your Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
+            <small class="form-text text-muted"></small>
+          </div>
+       </div>  
+       <div class="form-row">
+        <!-- Start Input Date -->
+        <div class="form-group col-md-6">
+          <label for="inputDate">Password</label>
+          <input type="password" class="form-control" onclick="my()" id="password" name="password" placeholder="*************" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required />
+          <div id='div_change_qty' name='div_change_qty' style='display:none;width:250px;position:absolute;z-index:10;background-color:#EAF6F6;border:2px solid #FF0063 ;' >
+            <hr><p>Use suggested password: {{pass}}</p><hr>
+             </table>    
+           </div>
+                   
+          <small class="form-text text-muted">Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters</small>
+          
+  
+          
+        </div>
+
+
+        <div class="form-group col-md-6">
+          <label for="inputDate">Confirm Password</label>
+          <input type="password" class="form-control"  name="cpassword"  placeholder="************" required />
+          <small class="form-text text-muted"></small>
+        </div>
+     </div>  
+            <!-- Start Submit Button -->
+      <button class="btn btn-primary btn-block col-lg-2" type="submit">Submit</button><br>
+      <a href="{% url 'd_login' %}" style="margin-top:10px;"><p>Already have an account? Login here</p></a>
+      <!-- End Submit Button -->
+    </form>
+    <!-- End Form -->
+  </div>
+  <!-- End Card Body -->
+</div>
+<!-- End Card -->
+            
+</div>
+  <!--------------------->
+
+    <footer class="container-fluid text-center"><br><br>
+   
+      <p>Copyright © 2022 Sri MHS Hospital. <a href="https://Srimhshospital.com" title="Visit w3schools">www.srimhshospital.com</a></p>
+    </footer>
+    <script>
+      // When the user clicks on div, open the popup
+     
+       var qty= document.querySelector('#password');
+
+qty.onmouseup= function(e) {
+  var div= document.querySelector('#div_change_qty');
+  div.style.display= div.style.display==='block'?'none':'block';
+}
+
+qty.onblur= function(e) {
+  var div= document.querySelector('#div_change_qty');
+  div.style.display= 'none';
+}
+      </script>
+    <script>
+          
+     (function () {
+    "use strict";
+    window.addEventListener(
+      "load",
+      function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName("needs-validation");
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener(
+            "submit",
+            function (event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      },
+      false
+    );
+  })();
+
+      </script>
+        {% for message in messages %}
+        {% if message.tags == 'success' %}
+          <!-- sweetalert js -->
+          <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+          <script>
+            var m = "{{ message }}";
+            Swal.fire({
+              icon: 'success',
+              text: m,
+              confirmButtonColor: '##FF0063',
+              color: '#FF0063',
+              background: '#EAF6F6',
+              allowEscapeKey: false,
+              showClass: {
+                popup: 'my-icon'                     // disable popup animation css
+              },
+            });
+          </script>
+        {% else %}
+        <!-- sweetalert js -->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+          var m = "{{ message }}";
+          Swal.fire({
+            icon: 'error',
+            text: m,
+            confirmButtonColor: '#FF0063',
+            color: '#FF0063',
+            background: '#EAF6F6',
+            allowEscapeKey: false,
+            showClass: {
+              popup: 'my-icon'                     // disable popup animation css
+            },
+          });
+        </script>
+        {% endif %}
+      {% endfor %}
+       
+  
+    </body>
+  </html>

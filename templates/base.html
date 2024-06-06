@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+  <title>Sri MHS Hospital</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> 
+<style> 
+  h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #FF0063;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    color: #FF0063;
+    font-weight: 400;
+    margin-bottom: 30px;
+  }  
+  .jumbotron {
+    background-color: #EAF6F6;
+    color: #fff;
+    padding: 180px 0px 25px;
+    font-family: Montserrat, sans-serif;
+  }
+ 
+  .logo-small {
+    color:  #143216;
+    font-size: 50px;
+  }
+  .logo {
+    color: #143216;
+    font-size: 200px;
+  }
+ 
+
+  .navbar {
+    margin-bottom:0%;
+    padding-top: 30px;
+    background-color: #66BFBF;
+    z-index: 9999;
+    border: 0;
+    font-size: 15px;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    font-family: Montserrat, sans-serif;
+   
+  }
+  .navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+    color:#FF0063 !important;
+    background-color: #EAF6F6 !important;
+  }
+  .navbar .navbar-toggle{
+    border-color: black;
+    color: #EAF6F6 !important;
+  }
+ 
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+      width: 100%;
+      margin-bottom: 35px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .logo {
+      font-size: 150px;
+    }
+  }
+ 
+
+footer{
+    background-color: #66BFBF;
+    margin-bottom: 0%;
+    height: 140px;
+  }
+
+</style>
+</head>
+<body>
+  
+  {% block content %}{% endblock %}
+<footer class="container-fluid text-center">
+  <a href="#" title="To Top">
+  </a><br><br
+  <p>Copyright © 2022 Sri MHS Hospital.<a href="https://Srimhshospital.com" title="Visit w3schools">www.srimhshospital.com</a></p>
+</footer>
+
+
+</body>
+</html>

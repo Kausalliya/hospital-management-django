@@ -1,0 +1,35 @@
+{% extends 'doctor_base.html' %}
+{% load static %}
+{% block content %}
+{%include 'doctor_dashboard_cards.html'%}
+<br><br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8 w-100">
+      <div class="p-1 text-centre" style="text-align:center;background-color:#FF0063 ;color: white;"><h5>Recent Appointment For You</h5></div>
+    <div class="table-responsive">
+    <table class="table table-hover table-sm ">
+      <thead>
+          <tr>
+            <th class="text-center pt-4">Patient Name</th>
+            <th class="text-center pt-4">Description</th>
+            <th class="text-center pt-4">Mobile</th>
+            <th class="text-center pt-4">Date</th>
+          </tr>
+        </thead>
+        {% for a in app %}
+        <tr>
+          <td class="text-center pt-4">{{a.patientName}}</td>
+          <td class="text-center pt-4">{{a.description}}</td>
+          <td class="text-center pt-4">{{a.mobile}}</td>
+          <td class="text-center pt-4">{{a.appointmentDate}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>
+{% endblock content %}

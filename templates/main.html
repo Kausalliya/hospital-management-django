@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+  <title>Sri MHS Hospital</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  
+  
+<style>
+  
+  body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    color:  #000000;
+  }
+  h2 {
+    text-transform: uppercase;
+    color: #FF0063;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    color: #FF0063;
+    font-weight: 400;
+    margin-bottom: 30px;
+  }  
+  .jumbotron {
+    background-color: #EAF6F6;
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+  }
+  book{
+    background-color: #FF0063;
+  }
+
+  .bg-grey {
+    background-color:  #EAF6F6;
+  }
+  .logo-small {
+    color:  #143216;
+    font-size: 50px;
+  }
+  .logo {
+    color: #143216;
+    font-size: 200px;
+  }
+  .thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+  }
+  .thumbnail img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .item h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    font-style: italic;
+    margin: 70px 0;
+  }
+  .item span {
+    font-style: normal;
+  }
+  .panel {
+    border: 1px solid  #143216; 
+    border-radius:0 !important;
+    transition: box-shadow 0.5s;
+  }
+  .panel:hover {
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+  }
+  .panel-footer .btn:hover {
+    border: 1px solid #143216;
+    background-color: #fff !important;
+    color: #143216;
+  }
+  .panel-heading {
+    color: #fff !important;
+    background-color: #143216;
+    padding: 25px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  .panel-footer {
+    background-color: white !important;
+  }
+  .panel-footer h3 {
+    font-size: 32px;
+  }
+  .panel-footer h4 {
+    color: #aaa;
+    font-size: 14px;
+  }
+  .panel-footer .btn {
+    margin: 15px 0;
+    background-color: #143216;
+    color: #fff;
+  }
+  .navbar {
+    margin-bottom: 0;
+    padding-top: 30px;
+    background-color: #66BFBF;
+    z-index: 9999;
+    border: 0;
+    font-size: 15px;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+   
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a,.active  {
+    color: #FF0063 !important;
+    background-color: rgba(255, 255, 255, 0.552) !important;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #EAF6F6 !important;
+  }
+  footer .glyphicon {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #FF0063;
+  }
+  .slideanim {visibility:hidden;}
+  .slide {
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    visibility: visible;
+  }
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+      width: 100%;
+      margin-bottom: 35px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .logo {
+      font-size: 150px;
+    }
+  }
+  .thumbnail {
+  padding: 0 0 15px 0;
+  border: none;
+  border-radius: 0;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 10px;
+}
+
+footer{
+    background-color: #66BFBF;
+    margin-bottom: 0%;
+    height: 140px;
+  }
+  footer .glyphicon {
+    
+    font-size: 20px;
+    margin-bottom: 20px;
+    color:  #FF0063;}
+
+</style>
+</head>
+ <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <nav class="navbar navbar-expand-md  navbar-dark">
+     <div class="container">
+      <div class="container">
+     <a class="navbar-brand" href="#">Sri MHS Hospital</div>
+     </a>
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+     <div class="collapse navbar-collapse" id="collapsibleNavbar">
+       <div class="container">
+       <ul class="navbar-nav mb-0">
+         <li class="nav-item">
+           <a class="nav-link active" href="{% url 'open_main' %}">Home</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="{% url 'admin_click' %}" >Admin</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="{% url 'doc_click' %}">Doctors</a>
+         </li> 
+         <li class="nav-item">
+           <a class="nav-link" href="{% url 'patient_click' %}">Patients</a>
+         </li>   
+       </ul>
+     </div>
+     </div>
+     </div>  
+   </nav>
+  
+
+<div class="jumbotron text-center ">
+  <div class="row">
+    <div class="col-sm-6 align-self-center">
+      <p class="h4" style="color:#FF0063">We Are Here For Your Care</p>
+      <h2 class="display-5" style="color:#FF0063">
+        Best Care & Better Doctor</h2>
+        <p class="h6" style="color:#FF0063;font-family: Montserrat, sans-serif;">Meeting your health care needs is our priority. At Sri MHS Hospitals, you and your family get the highest quality medical care in a safe and warm-hearted environment.We are committed to improving health care and treatment through research and educating future health care professionals. </p> 
+    <div class="container mt-4">
+      <a href="{% url 'patient_click' %}"><button class="btn book" style="background-color:#FF0063; color:white;">Book Appointment</button></a>
+      </div>
+    </div>
+   <div class="col-sm-6 ">
+    <img src="{% static 'images/banner_img.png' %}" class="img-fluid">
+   </div>
+</div>
+</div>
+<div class="container p-4 bg-info rounded mb-5">
+  <div class="row text-center">
+    <div class="col-sm-4">
+    <h2>1300+</h2>
+    <h5 class="display-5" style="color:white;">The hospital has better inpatient bed capacity of 1200-bed (490 units)</h5>
+  </div>
+  <div class="col-sm-4">
+    <h2>10,000,000+</h2>
+    <h5 class="display-5" style="color:white;">
+      Treated more than 10 million (1 crore) patients across India</h5>
+  </div>
+  <div class="col-sm-4">
+    <h2>128+</h2>
+    <h5 class="display-5" style="color:white;">
+      The infrastructure includes cutting-edge medical equipment along with 31 modern operating theatres</h5>
+  </div>
+  </div>
+</div>
+<div class="container-fluid text-center bg-grey">
+  <br><br>
+    <h2 class="mt-4">Centres of Excellence</h2>
+    <div class="row text-center">
+      <div class="col-sm-4">
+        <div class="thumbnail">
+          <img src="{% static 'images/sa.jpg' %}" alt="Paris">
+          <p><strong></strong></p>
+          <p></p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+            <img src="{% static 'images/s1.avif' %}" alt="Paris">
+          <p><strong></strong></p>
+          <p></p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="thumbnail">
+            <img src="{% static 'images/s2.avif' %}" alt="Paris">
+          <p><strong></strong></p>
+          <p></p>
+        </div>
+      </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a><br><br>
+  <p>Copyright © 2022 Sri MHS Hospital. <a href="https://Srimhshospital.com" title="Visit w3schools">www.srimhshospital.com</a></p>
+</footer>
+
+<script>
+$(document).ready(function(){
+
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    if (this.hash !== "") {
+      event.preventDefault();  
+      var hash = this.hash; // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+        window.location.hash = hash;
+      });
+    } 
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+
+</script>
+
+</body>
+</html>

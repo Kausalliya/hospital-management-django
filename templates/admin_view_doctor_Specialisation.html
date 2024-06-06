@@ -1,0 +1,50 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+<div class="container">
+  <div class="panel ">
+    <div class="panel-heading"  style="text-align:center;background-color:#FF0063 ;color:#fff;">
+      <h6 class="panel-title">Department & Doctors</h6>
+    </div>
+    <div class="table-responsive">
+    <table class="table table-hover text-centre table-bordered" >
+      <thead>
+        <tr>
+          <th class="p-4 text-center">Specialisation</th>
+          <th class="p-4 text-center">Doctor Name</th>
+          <th class="p-4 text-center">Email</th>
+          <th class="p-4 text-center">Mobile</th>
+        </tr>
+      </thead>
+      {% for d in doctors %}
+      <tr>
+        <td class="text-center" style="text-transform: capitalize;">{{d.specialization}}</td>
+        <td class="text-center" style="text-transform: capitalize;"> {{d.doctor.first_name}} {{d.doctor.last_name}}</td>
+        <td class="text-center" style="text-transform: capitalize;">{{d.doctor.email}}</td>
+        <td class="text-center" style="text-transform: capitalize;">{{d.mobile}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  </div>
+</div>
+{% endblock content %}

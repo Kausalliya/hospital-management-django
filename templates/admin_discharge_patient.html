@@ -1,0 +1,53 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+<div class="container">
+  <div class="panel">
+    <div class="panel-heading" style="text-align:center;background-color:#FF0063 ;color: white;">
+      <h6 class="panel-title">Discharge Patient</h6>
+    </div>
+    <div class="table-responsive">
+    <table class="table table-hover table-bordered" id="dev-table">
+      <thead>
+        <tr>
+          <th class="text-center pt-4">Name</th>
+          <th class="text-center pt-4">Address</th>
+          <th class="text-center pt-4">Symptoms</th>
+          <th class="text-center pt-4">Mobile</th>
+          <th class="text-center pt-4">Discharge</th>
+        </tr>
+      </thead>
+      {% for p in patients %}
+      <tr>
+        <td class="text-center">{{p.patient.first_name}} {{p.patient.last_name}}</td>
+        <td class="text-center">{{p.address}}</td>
+        <td class="text-center">{{p.symptoms}}</td>
+        <td class="text-center">{{p.mobile}}</td>
+        <td class="text-center"><a class="btn btn-primary btn-xs" href="{% url 'generate_bill' p.id  p.assignedDoctorId %}"><span class="glyphicon glyphicon-log-out"></span></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+</div>
+
+{% endblock content %}

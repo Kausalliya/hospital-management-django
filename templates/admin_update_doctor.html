@@ -1,0 +1,232 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+<head>
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      background: -webkit-linear-gradient(left, #1a2f12, #1d540f);
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #1f3719;
+      color: #fff;
+    }
+
+    .menu {
+      top: 50px;
+    }
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+    }
+
+    .form-control {
+      border-radius: 1.5rem;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #0062cc;
+      color: #fff;
+    }
+
+    .menu {
+      top: 50px;
+    }
+        p{
+        font-size: 20px;
+        color:rgb(255, 255, 255);
+    }
+    h2{
+        color:black;
+    }
+ 
+
+    .btn:hover {
+  background-color: #e40d63;
+  color:white;
+}
+.btn{
+    background-color: #FF0063;
+    width: 180px;
+    color: #EAF6F6;
+  }
+.navbar-nav li a:hover, .navbar-nav li.active a,.active  {
+    color: #038801 !important;
+    background-color: rgba(255, 255, 255, 0.552) !important;
+  }
+
+  </style>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<br><br>
+<div class="ab container mt-4 mb-4 p-4">
+  {% for message in messages %}
+  <p style="width: 60%;margin-left:auto;margin-right:auto;color: #f9210d;text-align: center;">
+   {{ message }}
+  </p>
+   {% endfor %}
+   <div class="card">
+    <div class="container p-4 text-center" style="color:#FF0063;background-color:#EAF6F6;font-family: Montserrat, sans-serif;" ><h1>Doctor Registration</h1> </div>
+    <!-- Start Card Body -->
+    <div class="card-body p-4">
+      <!-- Start Form -->
+      <form id="bookingForm" action="{% url 'update_doctor' d.id %}"  method="post" class="needs-validation" novalidate autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-row">
+          <!-- Start Input Date -->
+          <div class="form-group col-md-6">
+            <label for="inputDate">First Name</label>
+            <input type="text" class="form-control" id="inputDate" name="fname" value="{{d.doctor.first_name}}" style="text-transform: capitalize;" required />
+            <small class="form-text text-muted"></small>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputDate">Last Name</label>
+            <input type="text" class="form-control" id="inputDate" name="lname" value="{{d.doctor.last_name}}" style="text-transform: capitalize;"  required />
+            <small class="form-text text-muted"></small>
+          </div>
+       </div>   
+
+          <div class="form-group">
+            <label for="inputName">Address</label>
+            <textarea class="form-control" name="address"  rows="2" style="text-transform: capitalize;"  required >{{d.address}}</textarea>
+            <small class="form-text text-muted"></small>
+          </div>
+          
+          <div class="form-row">
+          <div class="form-group col-md-6">
+            <legend class="col-form-label pt-0">Gender</legend>
+            {% with val_gen=d.gender%}
+            <div class="form-check form-check-inline">
+              <input type="radio" name="gender" value="male" id="male"  {% if val_gen == "male" %} checked{% endif %} >
+              <label class="form-check-label" for="inlineRadioType1">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" name="gender" value="female" id="female"  {% if val_gen == "female" %} checked{% endif %} >
+              <label class="form-check-label" for="inlineRadioType2">Female</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input type="radio" name="gender" value="other" id="female"  {% if val_gen == "other" %} checked{% endif %}>
+              <label class="form-check-label" for="inlineRadioType3">Other</label>
+            </div> 
+            {% endwith %}
+            
+          </div>
+            <div class="form-group col-md-6">
+              <label for="inputDate">Contact Number</label>
+              <input type="tel" class="form-control" id="inputPhone" name="number" value="{{d.mobile}}" pattern="\d{5}\d{5}" required />
+              <small class="form-text text-muted"></small>
+           </div>
+          </div>
+
+          <div class="form-group">
+            <!-- Start Input Date -->
+              <label  class="label-title">Specialization</label>
+              <select  class="form-control" name="select" id="qwerty">
+                <option value="{{d.specialization}}" selected >{{d.specialization}}</option>
+                <option value="Cardiologist">Cardiologist</option>
+                <option value="Dermatologists">Dermatologists</option>
+                <option value="Emergency Medicine Specialists">Emergency Medicine Specialists</option>
+                <option value="Allergists/Immunologists">Allergists/Immunologists</option>
+                <option value="gynecologist">gynecologist</option>
+                <option value="Pediatrics">Pediatrics</option>
+               
+              </select>
+              <small class="form-text text-muted"></small>
+            </div>
+       <div class="form-row mt-3">
+        <!-- Start Input Date -->
+        <div class="form-group col-md-6">
+          <label for="inputDate">Username</label>
+            <input type="text" class="form-control" id="uname" name="uname" pattern="(?=.*\d)(?=.*[a-z]).{6,}" value="{{d.doctor.username}}" required />
+           <small class="form-text text-muted">Must contain at least one number and one letters, and at least 8 or more characters</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputDate">Email</label>
+          <input type="email" class="form-control"  name="email" value="{{d.doctor.email}}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
+          <small class="form-text text-muted"></small>
+        </div>
+     </div> 
+     <div class="from-row mt-3">
+      <div class="form-group col-md-6">
+        <label  class="label-title">Profile Picture</label>
+          <img src="{{d.profile_pic.url}}">
+          <input type="file" class="form-control" name="pic"  >
+      </div>
+      
+     </div> 
+          <!-- Start Submit Button -->
+    <button class="btn btn-block col-lg-2" type="submit">Submit</button><br>
+    <a href="{% url 'd_login' %}" style="margin-top:10px;"><p>Already have an account? Login here</p></a>
+    <!-- End Submit Button -->
+  </form>
+  <!-- End Form -->
+</div>
+<!-- End Card Body -->
+</div>
+<!-- End Card -->
+          
+</div>
+<!--------------------->
+<script>
+          
+  (function () {
+ "use strict";
+ window.addEventListener(
+   "load",
+   function () {
+     // Fetch all the forms we want to apply custom Bootstrap validation styles to
+     var forms = document.getElementsByClassName("needs-validation");
+     // Loop over them and prevent submission
+     var validation = Array.prototype.filter.call(forms, function (form) {
+       form.addEventListener(
+         "submit",
+         function (event) {
+           if (form.checkValidity() === false) {
+             event.preventDefault();
+             event.stopPropagation();
+           }
+           form.classList.add("was-validated");
+         },
+         false
+       );
+     });
+   },
+   false
+ );
+})();
+
+   </script>
+{% endblock content %}

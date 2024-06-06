@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  
+   
+    h2{
+        color:black;
+    }
+
+input[type="file"] {
+ outline: none;
+ cursor:pointer;
+ font-size:15px;
+}
+.jumbotron {
+    background-color: #EAF6F6;
+    font-family: Montserrat, sans-serif;
+    margin-bottom: 0%;
+    
+    padding-top: 90px;
+  }
+label {
+ color:rgb(0, 0, 0);
+ border-radius: 5px;
+ font-size: 20px;
+ position: relative;
+ font-family: Montserrat, sans-serif;
+}
+p{
+  color:#FF0063;
+
+}
+
+
+::-webkit-input-placeholder {
+ color:#d9d9d9;
+}
+
+.btn {
+   display:inline-block;
+   padding:10px 20px;
+   background-color: #FF0063;
+   font-size:17px;
+   border:none;
+   border-radius:5px;
+   color:#ffffff;
+   cursor:pointer;
+}
+
+.btn:hover {
+  background-color: #e40d63;
+  color:white;
+}
+.navbar {
+    margin-bottom: 0;
+    padding-top: 30px;
+    background-color: #66BFBF;
+    z-index: 9999;
+    border: 0;
+    font-size: 15px;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+  }
+  p{
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+  }
+  .navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+   
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a,.active  {
+    color: #FF0063 !important;
+    background-color: rgba(255, 255, 255, 0.552) !important;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #EAF6F6 !important;
+  }
+
+</style>
+<nav class="navbar navbar-expand-md  navbar-dark">
+  <div class="container">
+   <div class="container">
+  <a class="navbar-brand" href="#">Sri MHS Hospital</div>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="container">
+    <ul class="navbar-nav mb-0">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'open_main' %}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'admin_click' %}" >Admin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="{% url 'doc_click' %}">Doctors</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'patient_click' %}">Patients</a>
+      </li>   
+    </ul>
+  </div>
+  </div>
+  </div>  
+</nav>
+  <div class="jumbotron" style="text-align: center;height: 536px;">
+  <h1 class="display-4" style="color:#FF0063;">Hello {{user.first_name}}</h1>
+  <p>Your Account is not approved till now <br><br>Our Team is checking your profile <br><br> Soon your Account will be confirmed !!!</p>
+  <p>Check Later</p><hr>
+  <p class="lead">
+    <a class="btn btn-danger btn-lg" href="{% url 'logout' %}" role="button">Logout For Now</a>
+  </p>
+</div>
+  
+{% endblock %}

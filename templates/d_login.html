@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+   .ab{
+        padding-top:80px;
+        height:488px;
+ 
+    }
+    p{
+        font-size: 20px;
+        color:black;
+    }
+    h2{
+        color:black;
+    }
+
+input[type="file"] {
+ outline: none;
+ cursor:pointer;
+ font-size:15px;
+}
+
+label {
+ color:rgb(0, 0, 0);
+ border-radius: 5px;
+ font-size: 20px;
+ position: relative;
+ font-family: Montserrat, sans-serif;
+}
+p{
+  color:#FF0063;
+
+}
+
+
+::-webkit-input-placeholder {
+ color:#d9d9d9;
+}
+
+.btn {
+   display:inline-block;
+   padding:10px 20px;
+   background-color: #FF0063;
+   font-size:17px;
+   border:none;
+   border-radius:5px;
+   color:#ffffff;
+   cursor:pointer;
+}
+
+.btn:hover {
+  background-color: #e40d63;
+  color:white;
+}
+.navbar {
+    margin-bottom: 0;
+    padding-top: 30px;
+    background-color: #66BFBF;
+    z-index: 9999;
+    border: 0;
+    font-size: 15px;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+  }
+  p{
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+  }
+  .navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+   
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a,.active  {
+    color: #FF0063 !important;
+    background-color: rgba(255, 255, 255, 0.552) !important;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #EAF6F6 !important;
+  }
+
+</style>
+<nav class="navbar navbar-expand-md  navbar-dark">
+  <div class="container">
+   <div class="container">
+  <a class="navbar-brand" href="#">Sri MHS Hospital</div>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="container">
+    <ul class="navbar-nav mb-0">
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'open_main' %}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'admin_click' %}" >Admin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="{% url 'doc_click' %}">Doctors</a>
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'patient_click' %}">Patients</a>
+      </li>   
+    </ul>
+  </div>
+  </div>
+  </div>  
+</nav>
+
+
+<div class="ab container mt-4 mb-4 p-4 ">
+
+   <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+   <div class="card text-center ">
+    <div class="container p-3 text-center" style="color:#FF0063;background-color:#EAF6F6;font-family: Montserrat, sans-serif;" ><h3>Doctor Login</h3> </div>
+    <!-- Start Card Body -->
+    <div class="card-body">
+      <!-- Start Form -->
+      <form id="bookingForm" action="{% url 'd_login_to' %}" method="post" class="needs-validation" novalidate autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+          <div class="form-group ">
+            <label for="inputDate">Username</label>
+            <input type="text" class="form-control mt-1" id="inputDate" name="uname" placeholder="Enter Your Username" required />
+            <small class="form-text text-muted"></small>
+          </div>
+          <div class="form-group ">
+            <label for="inputDate">Password</label>
+            <input type="password" class="form-control mt-1" id="inputDate" name="password" placeholder="Enter your Password" required />
+            <small class="form-text text-muted"></small>
+          </div>
+          <button class="btn btn-primary btn-block mt-3 mb-3" type="submit">Login</button>
+          
+          <a href="{% url 'doctor_register' %}" style="margin-top:10px;"><p>Do not have account? Signup here</p></a>
+      </form>
+    </div>
+      </div>
+      </div>
+      <div class="col-sm-1 "></div>
+    </div>
+  </div>
+  {% for message in messages %}
+  {% if message.tags == 'success' %}
+    <!-- sweetalert js -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      var m = "{{ message }}";
+      Swal.fire({
+        icon: 'success',
+        text: m,
+        confirmButtonColor: '#FF0063',
+        color: '#FF0063',
+        background: '#EAF6F6',
+        allowEscapeKey: false,
+        showClass: {
+          popup: 'my-icon'                     // disable popup animation css
+        },
+      });
+    </script>
+  {% else %}
+  <!-- sweetalert js -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    var m = "{{ message }}";
+    Swal.fire({
+      icon: 'error',
+      text: m,
+      confirmButtonColor: '#FF0063',
+      color: '#FF0063',
+      background: '#EAF6F6',
+      allowEscapeKey: false,
+      showClass: {
+        popup: 'my-icon'                     // disable popup animation css
+      },
+    });
+  </script>
+  {% endif %}
+{% endfor %}
+  
+{% endblock %}
